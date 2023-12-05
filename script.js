@@ -7,11 +7,11 @@ const prev = document.querySelector('#prev');
 
 const urlDefault = "https://graph.instagram.com/me/media";
 
-const fields = "?fields=media_type,media_url,caption,permalink&access_token=";
+const campos = "?fields=media_type,media_url,caption,permalink&access_token=";
 
-const access_token = "";
+const token = "IGQWRQd09nZA3lkaVROY1ZA2VlBjTnlXc2NORjVSdkVaM3FCYVFmSTlOdV95aTBfTnJNYm0wbS1mRmluSk9RNjhPaHhnd3hTcDhVbGY0c282djlWb3MtTTlzNXlYSEl5VG9venhEb0R0YUdBQ2NHck94aEx3ZAmYtNTQZD";
 
-var url = urlDefault + fields + access_token;
+var url = urlDefault + campos + token;
 
 fetch(url)
   .then(res => res.json())
@@ -23,11 +23,12 @@ function truncateText(text, maxLength) {
 
 function CrearHtml(data) {
   for (const img of data) {
+    // insertarndo html
     galery.innerHTML += `
         <div class="image overflow">
             <img loading="lazy" src="${img.media_url}" alt="">
             <div class="opacity-hover">
-                <a href="${img.permalink}" class="caption">
+                <a href="${img.permalink}" class="caption" target="_blank">
                     <p>
                         ${truncateText(img.caption || '', 100)}
                     </p>
